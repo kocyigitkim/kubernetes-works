@@ -1,4 +1,4 @@
-VERSION="1.24.7-00"
+KUBE_VERSION="1.24.7-00"
 
 mkdir $HOME/kubernetes-installation
 cd $HOME/kubernetes-installation
@@ -32,7 +32,7 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 # Update packages
 sudo apt update -y
 # Install kubernetes tools
-sudo apt install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
+sudo apt install -y kubelet=$KUBE_VERSION kubeadm=$KUBE_VERSION kubectl=$KUBE_VERSION
 sudo apt-mark hold kubelet kubeadm kubectl
 
 #
