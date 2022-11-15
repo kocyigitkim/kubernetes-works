@@ -14,7 +14,7 @@ apt update -y
 apt-get install apt-transport-https ca-certificates curl gnupg lsb-release golang-go -y
 # Create keyrings
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg -yes
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg --yes
 # Add docker repository
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Update repositories again
@@ -58,7 +58,7 @@ systemctl enable cri-docker.service
 systemctl enable --now cri-docker.socket
 
 # Install Kubernetes
-kubeadm init --cri-socket=/var/run/cri-dockerd.sock
+sudo kubeadm init --cri-socket=/var/run/cri-dockerd.sock
 
 # Copy kubernetes admin credentials to current user profile
 mkdir -p $HOME/.kube
