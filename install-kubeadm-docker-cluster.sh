@@ -64,3 +64,8 @@ sudo kubeadm init --cri-socket=/var/run/cri-dockerd.sock
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Taint current node
+kubectl taint node $(hostname) node-role.kubernetes.io/master-
+kubectl taint node $(hostname) node-role.kubernetes.io/control-plane-
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml
